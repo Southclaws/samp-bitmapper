@@ -8,16 +8,17 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+#include <BasicBitmap.h>
 #include <amx/amx.h>
 
 #include "impl.hpp"
 
-int Impl::OpenBitmap(string path)
+Impl::Bitmap::Bitmap(string path, int width, int height, vector<int> colours)
 {
-    return 0;
+    this->_data = &BasicBitmap(width, height, BasicBitmap::A8B8G8R8);
 }
 
-int Impl::CloseBitmap(int id)
+Impl::Bitmap::~Bitmap()
 {
-    return 0;
+    delete this->_data;
 }
