@@ -13,20 +13,45 @@
 #include "BasicBitmap.h"
 #include "impl.hpp"
 
-Impl::Bitmap::Bitmap(string path, int width, int height) {
-    this->_data = &BasicBitmap(width, height, BasicBitmap::A8B8G8R8);
+
+// CurrentID is a continually incrementing unique identifier it increments
+// for each bitmap opened and provides a simple way to uniquely identify
+// bitmaps in Pawn space.
+int CurrentID;
+
+// BitmapPool maps Pawn space ID numbers to actual BasicBitmap objects.
+map<int, BasicBitmap*> BitmapPool;
+
+
+cell Bitmap::OpenBitmap(string path) {
+	BasicBitmap* bmp = BasicBitmap::LoadBmp(path.c_str());
+	BitmapPool[CurrentID] = bmp;
+
+	return CurrentID++;
 }
 
-Impl::Bitmap::~Bitmap() {
-    delete _data;
+cell Bitmap::CloseBitmap(int id) {
+	auto search = BitmapPool.find(id);
+	if (search == BitmapPool.end()) {
+		return 1;
+	}
+	delete search->second;
+
+	return 0;
 }
 
-int Impl::Bitmap::GetRGB(int x, int y, int &r, int &g, int &b) {
-	IUINT32 pixel = _data->GetColor(x, y);
+cell Bitmap::GetRGB(int handle, int x, int y, int &r, int &g, int &b) {
+	auto search = BitmapPool.find(handle);
+	if (search == BitmapPool.end()) {
+		return 1;
+	}
 
+	BasicBitmap* bmp = search->second;
+
+	IUINT32 pixel = search->second->GetColor(x, y);
 	r = (pixel >> 16) & 0xFF;
 	g = (pixel >> 8) & 0xFF;
 	b = pixel & 0xFF;
 
-	return 0;
+	return (int)bmp;
 }
