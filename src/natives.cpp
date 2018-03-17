@@ -6,12 +6,14 @@ using std::string;
 #include "impl.hpp"
 #include "natives.hpp"
 
-cell AMX_NATIVE_CALL Native::OpenBitmap(AMX* amx, cell* params)
-{
+cell AMX_NATIVE_CALL Native::OpenBitmap(AMX *amx, cell *params) {
     return 0;
 }
 
-cell AMX_NATIVE_CALL Native::CloseBitmap(AMX* amx, cell* params)
-{
+cell AMX_NATIVE_CALL Native::CloseBitmap(AMX *amx, cell *params) {
     return 0;
+}
+
+cell AMX_NATIVE_CALL Native::GetRGB(AMX *amx, cell *params) {
+	return 0;
 }

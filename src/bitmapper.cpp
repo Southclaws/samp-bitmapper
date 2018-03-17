@@ -32,7 +32,8 @@ PLUGIN_EXPORT void PLUGIN_CALL Unload()
 
 AMX_NATIVE_INFO NATIVES[] = {
     { "OpenBitmap", Native::OpenBitmap },
-    { "CloseBitmap", Native::CloseBitmap },
+	{ "CloseBitmap", Native::CloseBitmap },
+	{ "GetRGB", Native::GetRGB },
     { 0, 0 }
 };
 

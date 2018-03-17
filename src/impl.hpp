@@ -6,15 +6,17 @@
 using std::string;
 using std::vector;
 
-#include <BasicBitmap.h>
+#include "BasicBitmap.h"
 
 namespace Impl {
 
 // Bitmap represents a single bitmap image loaded into memory
 class Bitmap {
 public:
-    Bitmap(string path, int width, int height, vector<int> colours);
+    Bitmap(string path, int width, int height);
     ~Bitmap();
+
+	int GetRGB(int x, int y, int &r, int &g, int &b);
 
 private:
     BasicBitmap* _data = nullptr;
