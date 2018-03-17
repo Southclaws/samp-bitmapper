@@ -19,3 +19,5 @@ add_samp_plugin(bitmapper
 	natives.hpp
 	plugin.def
 )
+
+file(GLOB BasicBitmap "BasicBitmap*")
