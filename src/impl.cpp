@@ -8,9 +8,9 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include <BasicBitmap.h>
 #include <amx/amx.h>
 
+#include "BasicBitmap.h"
 #include "impl.hpp"
 
 Impl::Bitmap::Bitmap(string path, int width, int height, vector<int> colours)

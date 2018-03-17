@@ -12,12 +12,12 @@ add_samp_plugin(bitmapper
 	${SAMPSDK_DIR}/amxplugin.cpp
 	${SAMPSDK_DIR}/amxplugin2.cpp
 	${SAMPSDK_DIR}/amx/getch.c
+	BasicBitmap.h
+	BasicBitmap.cpp
 	bitmapper.cpp
 	impl.cpp
 	impl.hpp
 	natives.cpp
 	natives.hpp
-	BasicBitmap.cpp
-	BasicBitmap.h
 	plugin.def
 )
