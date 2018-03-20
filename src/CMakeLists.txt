@@ -14,6 +14,7 @@ add_samp_plugin(bitmapper
 	${SAMPSDK_DIR}/amx/getch.c
 	BasicBitmap.h
 	BasicBitmap.cpp
+	BasicBitmap_SSE2.cpp
 	bitmapper.cpp
 	impl.cpp
 	impl.hpp

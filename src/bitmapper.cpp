@@ -4,8 +4,7 @@
 #include <plugincommon.h>
 
 #include "natives.hpp"
-
-#define VERSION "Version 1.5"
+int BasicBitmap_SSE2_AVX_Enable();
 
 typedef void (*logprintf_t)(char* format, ...);
 
@@ -20,6 +19,7 @@ PLUGIN_EXPORT unsigned int PLUGIN_CALL Supports()
 
 PLUGIN_EXPORT bool PLUGIN_CALL Load(void** ppData)
 {
+    BasicBitmap_SSE2_AVX_Enable();
     pAMXFunctions = ppData[PLUGIN_DATA_AMX_EXPORTS];
     logprintf = (logprintf_t)ppData[PLUGIN_DATA_LOGPRINTF];
 
