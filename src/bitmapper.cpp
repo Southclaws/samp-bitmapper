@@ -26,14 +26,12 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(void** ppData)
     return true;
 }
 
-PLUGIN_EXPORT void PLUGIN_CALL Unload()
-{
-}
+PLUGIN_EXPORT void PLUGIN_CALL Unload() {}
 
 AMX_NATIVE_INFO NATIVES[] = {
     { "OpenBitmap", Native::OpenBitmap },
-	{ "CloseBitmap", Native::CloseBitmap },
-	{ "GetRGB", Native::GetRGB },
+    { "CloseBitmap", Native::CloseBitmap },
+    { "GetRGB", Native::GetRGB },
     { 0, 0 }
 };
 
@@ -42,7 +40,4 @@ PLUGIN_EXPORT int PLUGIN_CALL AmxLoad(AMX* amx)
     return amx_Register(amx, NATIVES, -1);
 }
 
-PLUGIN_EXPORT int PLUGIN_CALL AmxUnload(AMX* amx)
-{
-    return AMX_ERR_NONE;
-}
+PLUGIN_EXPORT int PLUGIN_CALL AmxUnload(AMX* amx) { return AMX_ERR_NONE; }

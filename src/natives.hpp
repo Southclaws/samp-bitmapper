@@ -7,7 +7,6 @@ namespace Native {
 cell OpenBitmap(AMX* amx, cell* params);
 cell CloseBitmap(AMX* amx, cell* params);
 cell GetRGB(AMX* amx, cell* params);
-};
+}; // namespace Native
 
 #endif
- 

@@ -1,23 +1,24 @@
 {
-    "files.associations": {
-        "__config": "cpp",
-        "__nullptr": "cpp",
-        "exception": "cpp",
-        "initializer_list": "cpp",
-        "new": "cpp",
-        "stdexcept": "cpp",
-        "typeinfo": "cpp",
-        "iosfwd": "cpp",
-        "cstdlib": "cpp",
-        "__locale": "cpp",
-        "string": "cpp",
-        "fstream": "cpp",
-        "ios": "cpp",
-        "locale": "cpp",
-        "tuple": "cpp",
-        "type_traits": "cpp",
-        "utility": "cpp",
-        "iterator": "cpp",
-        "vector": "cpp"
-    }
+  "files.associations": {
+    "__config": "cpp",
+    "__nullptr": "cpp",
+    "exception": "cpp",
+    "initializer_list": "cpp",
+    "new": "cpp",
+    "stdexcept": "cpp",
+    "typeinfo": "cpp",
+    "iosfwd": "cpp",
+    "cstdlib": "cpp",
+    "__locale": "cpp",
+    "string": "cpp",
+    "fstream": "cpp",
+    "ios": "cpp",
+    "locale": "cpp",
+    "tuple": "cpp",
+    "type_traits": "cpp",
+    "utility": "cpp",
+    "iterator": "cpp",
+    "vector": "cpp"
+  },
+  "C_Cpp.clang_format_style": "{ BasedOnStyle: WebKit, IndentWidth: 4 }"
 }
