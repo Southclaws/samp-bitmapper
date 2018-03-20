@@ -47,7 +47,3 @@ server_log.txt
 build/
 *.so
 *.o
-
-# large bitmaps for testing
-
-*.bmp
