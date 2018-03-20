@@ -57,7 +57,7 @@ cell Bitmap::GetRGB(int handle, int x, int y, int& r, int& g, int& b)
         return 2;
     }
 
-    IUINT32 pixel = search->second->GetColor(x, y);
+    IUINT32 pixel = bmp->GetColor(x, y);
     r = (pixel >> 16) & 0xFF;
     g = (pixel >> 8) & 0xFF;
     b = pixel & 0xFF;
