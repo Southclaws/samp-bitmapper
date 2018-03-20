@@ -62,5 +62,5 @@ cell Bitmap::GetRGB(int handle, int x, int y, int& r, int& g, int& b)
     g = (pixel >> 8) & 0xFF;
     b = pixel & 0xFF;
 
-    return pixel;
+    return 0;
 }
