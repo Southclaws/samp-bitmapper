@@ -25,6 +25,10 @@ map<int, BasicBitmap*> BitmapPool;
 
 cell Bitmap::OpenBitmap(string path) {
 	BasicBitmap* bmp = BasicBitmap::LoadBmp(path.c_str());
+	if (bmp == nullptr) {
+		return -1;
+	}
+
 	BitmapPool[CurrentID] = bmp;
 
 	return CurrentID++;
@@ -48,10 +52,14 @@ cell Bitmap::GetRGB(int handle, int x, int y, int &r, int &g, int &b) {
 
 	BasicBitmap* bmp = search->second;
 
+	if (bmp == nullptr) {
+		return 2;
+	}
+
 	IUINT32 pixel = search->second->GetColor(x, y);
 	r = (pixel >> 16) & 0xFF;
 	g = (pixel >> 8) & 0xFF;
 	b = pixel & 0xFF;
 
-	return (int)bmp;
+	return 0;
 }

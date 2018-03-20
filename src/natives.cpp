@@ -30,12 +30,10 @@ cell AMX_NATIVE_CALL Native::GetRGB(AMX *amx, cell *params) {
 	int x = params[2];
 	int y = params[3];
 
-	logprintf("%d", id);
-
 	int r, g, b = 0;
 
 	cell ret = Bitmap::GetRGB(id, x, y, r, g, b);
-/*
+
 	cell* rr;
 	amx_GetAddr(amx, params[4], &rr);
 	*rr = r;
@@ -44,7 +42,7 @@ cell AMX_NATIVE_CALL Native::GetRGB(AMX *amx, cell *params) {
 	*rr = r;
 	cell* bb;
 	amx_GetAddr(amx, params[6], &bb);
-	*bb = b;*/
+	*bb = b;
 
 	return ret;
 }
