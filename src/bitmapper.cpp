@@ -6,7 +6,7 @@
 #include "natives.hpp"
 int BasicBitmap_SSE2_AVX_Enable();
 
-typedef void (*logprintf_t)(char* format, ...);
+typedef void (*logprintf_t)(const char* format, ...);
 
 logprintf_t logprintf;
 
@@ -19,9 +19,13 @@ PLUGIN_EXPORT unsigned int PLUGIN_CALL Supports()
 
 PLUGIN_EXPORT bool PLUGIN_CALL Load(void** ppData)
 {
-    BasicBitmap_SSE2_AVX_Enable();
+    int sse = BasicBitmap_SSE2_AVX_Enable();
+
     pAMXFunctions = ppData[PLUGIN_DATA_AMX_EXPORTS];
     logprintf = (logprintf_t)ppData[PLUGIN_DATA_LOGPRINTF];
+
+    logprintf("Bitmapper plugin by Southclaws loaded");
+    logprintf("- Bitmapper SSE Status: %d", sse);
 
     return true;
 }
