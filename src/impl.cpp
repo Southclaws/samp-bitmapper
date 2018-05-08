@@ -83,20 +83,20 @@ int Impl::GetRGB(int handle, int x, int y, int& r, int& g, int& b)
 
 int Impl::GetRandomCachedRGB(int handle, IUINT32 colour, int& x, int& y)
 {
-	auto search = BitmapPool.find(handle);
-	if (search == BitmapPool.end()) {
-		return 1;
-	}
+    auto search = BitmapPool.find(handle);
+    if (search == BitmapPool.end()) {
+        return 1;
+    }
 
-	auto coloursTable = search->second.colourPositions.find(colour);
-	if (coloursTable == search->second.colourPositions.end()) {
-		return 2;
-	}
+    auto coloursTable = search->second.colourPositions.find(colour);
+    if (coloursTable == search->second.colourPositions.end()) {
+        return 2;
+    }
 
-	std::uniform_int_distribution<> distance(0, std::distance(coloursTable->second.begin(), coloursTable->second.end()) - 1);
-	auto pos = coloursTable->second[distance(randomGenerator)];
-	x = pos.first;
-	y = pos.second;
+    std::uniform_int_distribution<> distance(0, std::distance(coloursTable->second.begin(), coloursTable->second.end()) - 1);
+    auto pos = coloursTable->second[distance(randomGenerator)];
+    x = pos.first;
+    y = pos.second;
 
-	return 0;
+    return 0;
 }
