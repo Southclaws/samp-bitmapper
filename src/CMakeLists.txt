@@ -15,6 +15,7 @@ add_samp_plugin(bitmapper
 	BasicBitmap.h
 	BasicBitmap.cpp
 	BasicBitmap_SSE2.cpp
+	common.hpp
 	bitmapper.cpp
 	impl.cpp
 	impl.hpp

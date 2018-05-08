@@ -1,6 +1,29 @@
-#include <a_samp>
+#define RUN TESTS
 
 #include "../../bitmapper.inc"
+
+#include <a_samp>
+#include <YSI\y_testing>
+
+
+Test:Bitmap1Pixel00() {
+    new
+        ret,
+        Bitmap:handle;
+
+    ret = OpenBitmap("test1.bmp", handle);
+    ASSERT(ret == 0);
+
+    new r, g, b;
+    ret = GetRGB(handle, 0, 0, r, g, b);
+    ASSERT(ret == 0);
+    ASSERT(r == 0xFF);
+    ASSERT(g == 0xFF);
+    ASSERT(b == 0xFF);
+
+    ret = CloseBitmap(handle);
+    ASSERT(ret == 0);
+}
 
 main() {
     new Bitmap:handle;
@@ -26,23 +49,4 @@ main() {
 
     ret = CloseBitmap(handle);
     printf("CloseBitmap ret: %d", ret);
-}
-
-Test:Bitmap1Pixel00() {
-    new
-        ret,
-        Bitmap:handle;
-
-    ret = OpenBitmap("test1.bmp", handle);
-    ASSERT(ret == 0);
-
-    new r, g, b;
-    ret = GetRGB(handle, 0, 0, r, g, b);
-    ASSERT(ret == 0);
-    ASSERT(r == 0xFF);
-    ASSERT(g == 0xFF);
-    ASSERT(b == 0xFF);
-
-    ret = CloseBitmap(handle);
-    ASSERT(ret == 0);
 }

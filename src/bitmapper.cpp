@@ -1,16 +1,19 @@
-// bitmapper, based on the old FileManager plugin by JaTochNietDan
-
 #include <amx/amx.h>
 #include <plugincommon.h>
 
+#include "common.hpp"
 #include "natives.hpp"
-int BasicBitmap_SSE2_AVX_Enable();
-
-typedef void (*logprintf_t)(const char* format, ...);
 
 logprintf_t logprintf;
+int BasicBitmap_SSE2_AVX_Enable();
 
-extern void* pAMXFunctions;
+extern "C" AMX_NATIVE_INFO nativeList[] = {
+    { "OpenBitmap", Natives::OpenBitmap },
+    { "OpenBitmapCache", Natives::OpenBitmapCache },
+    { "CloseBitmap", Natives::CloseBitmap },
+    { "GetRGB", Natives::GetRGB },
+    { 0, 0 }
+};
 
 PLUGIN_EXPORT unsigned int PLUGIN_CALL Supports()
 {
@@ -30,18 +33,17 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(void** ppData)
     return true;
 }
 
-PLUGIN_EXPORT void PLUGIN_CALL Unload() {}
-
-AMX_NATIVE_INFO NATIVES[] = {
-    { "OpenBitmap", Native::OpenBitmap },
-    { "CloseBitmap", Native::CloseBitmap },
-    { "GetRGB", Native::GetRGB },
-    { 0, 0 }
-};
-
 PLUGIN_EXPORT int PLUGIN_CALL AmxLoad(AMX* amx)
 {
-    return amx_Register(amx, NATIVES, -1);
+    return amx_Register(amx, nativeList, -1);
 }
 
-PLUGIN_EXPORT int PLUGIN_CALL AmxUnload(AMX* amx) { return AMX_ERR_NONE; }
+PLUGIN_EXPORT int PLUGIN_CALL Unload()
+{
+    return 1;
+}
+
+PLUGIN_EXPORT int PLUGIN_CALL AmxUnload()
+{
+    return 1;
+}
