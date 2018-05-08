@@ -1,32 +1,34 @@
 #ifndef BITMAPPER_IMPL_H
 #define BITMAPPER_IMPL_H
 
+#include <iterator>
 #include <map>
+#include <random>
 #include <set>
 #include <string>
 #include <utility>
 #include <vector>
-using std::map;
-using std::pair;
-using std::set;
-using std::string;
-using std::vector;
 
 #include "BasicBitmap.h"
+#include "common.hpp"
 
 namespace Impl {
 struct Bitmap {
     BasicBitmap* bmp;
-    vector<int32_t> colours;
-    map<int32_t, vector<pair<int, int>>> colourPositions;
+    bool isCached;
+    std::vector<IUINT32> colours;
+    std::map<IUINT32, std::vector<std::pair<int, int>>> colourPositions;
 };
-int OpenBitmap(string path);
-int OpenBitmapCached(string path, set<int> colours);
+int OpenBitmap(std::string path);
+int OpenBitmapCached(std::string path, std::set<IUINT32> colours);
 int CloseBitmap(int handle);
 int GetRGB(int handle, int x, int y, int& r, int& g, int& b);
+int GetRandomCachedRGB(int handle, IUINT32 colour, int& x, int& y);
 
 extern int BitmapPoolCounter;
-extern map<int, Bitmap> BitmapPool;
+extern std::map<int, Bitmap> BitmapPool;
+extern std::random_device randomDevice;
+extern std::mt19937 randomGenerator;
 };
 
 #endif

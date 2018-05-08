@@ -1,12 +1,12 @@
-#define RUN TESTS
+#define RUN_TESTS
 
-#include "../../bitmapper.inc"
+#include "bitmapper.inc"
 
 #include <a_samp>
 #include <YSI\y_testing>
 
 
-Test:Bitmap1Pixel00() {
+Test:ReadPixels() {
     new
         ret,
         Bitmap:handle;
@@ -25,28 +25,37 @@ Test:Bitmap1Pixel00() {
     ASSERT(ret == 0);
 }
 
+Test:GetRandom() {
+    new
+        ret,
+        Bitmap:handle;
+
+    ret = OpenBitmapCache("test2.bmp", handle, {0xff0000, 0x0000ff}, 2);
+    ASSERT(ret == 0);
+
+    new x, y;
+
+    for(new i; i < 100; i++) {
+        ret = GetRandomCachedRGB(handle, 0xff0000, x, y);
+        ASSERT(ret == 0);
+        ASSERT(x < 3);
+        ASSERT(y < 3);
+        printf("%d %d", x, y);
+    }
+
+    for(new i; i < 100; i++) {
+        ret = GetRandomCachedRGB(handle, 0x0000ff, x, y);
+        ASSERT(ret == 0);
+        ASSERT(x > 4);
+        ASSERT(y > 4);
+        printf("%d %d", x, y);
+    }
+
+    ret = GetRandomCachedRGB(handle, 0xf3f3f3, x, y);
+    printf("%d", ret);
+    ASSERT(ret == 2);
+}
+
 main() {
-    new Bitmap:handle;
-    new ret = OpenBitmap("test1.bmp", handle);
-    printf("OpenBitmap ret: %d, handle: %d", ret, _:handle);
-
-    new r, g, b;
-
-    ret = GetRGB(handle, 0, 0, r, g, b);
-    printf("GetRGB X:0 Y:0: RED: %x GREEN: %x BLUE: %x, ret: %x", r, g, b, ret);
-
-    ret = GetRGB(handle, 1, 0, r, g, b);
-    printf("GetRGB X:1 Y:0: RED: %x GREEN: %x BLUE: %x, ret: %x", r, g, b, ret);
-
-    ret = GetRGB(handle, 2, 0, r, g, b);
-    printf("GetRGB X:2 Y:0: RED: %x GREEN: %x BLUE: %x, ret: %x", r, g, b, ret);
-
-    ret = GetRGB(handle, 3, 0, r, g, b);
-    printf("GetRGB X:3 Y:0: RED: %x GREEN: %x BLUE: %x, ret: %x", r, g, b, ret);
-
-    ret = GetRGB(handle, 4, 0, r, g, b);
-    printf("GetRGB X:4 Y:0: RED: %x GREEN: %x BLUE: %x, ret: %x", r, g, b, ret);
-
-    ret = CloseBitmap(handle);
-    printf("CloseBitmap ret: %d", ret);
+    //
 }

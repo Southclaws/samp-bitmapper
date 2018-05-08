@@ -12,6 +12,7 @@ extern "C" AMX_NATIVE_INFO nativeList[] = {
     { "OpenBitmapCache", Natives::OpenBitmapCache },
     { "CloseBitmap", Natives::CloseBitmap },
     { "GetRGB", Natives::GetRGB },
+	{ "GetRandomCachedRGB", Natives::GetRandomCachedRGB },
     { 0, 0 }
 };
 

@@ -13,6 +13,7 @@ cell OpenBitmap(AMX* amx, cell* params);
 cell OpenBitmapCache(AMX* amx, cell* params);
 cell CloseBitmap(AMX* amx, cell* params);
 cell GetRGB(AMX* amx, cell* params);
+cell GetRandomCachedRGB(AMX* amx, cell* params);
 }
 
 #endif

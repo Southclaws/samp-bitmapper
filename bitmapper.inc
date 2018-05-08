@@ -19,3 +19,7 @@ native CloseBitmap(Bitmap:handle);
 // GetRGB looks up the red, green and blue values stored in the specified X and
 // Y coordinates and stores them in the result parameters `r`, `b` and `g`.
 native GetRGB(Bitmap:handle, x, y, &r, &g, &b);
+
+// GetRandomCachedRGB provides coordinates and RGB information from a random
+// pixel in the bitmap that contains the specified colour.
+native GetRandomCachedRGB(Bitmap:handle, colour, &x, &y);

@@ -18,13 +18,14 @@ cell Natives::OpenBitmapCache(AMX* amx, cell* params)
 {
     std::string path = amx_GetCppString(amx, params[1]);
 
+	std::set<IUINT32> colours;
     cell* addr;
     amx_GetAddr(amx, params[3], &addr);
     for (int i = 0; i < params[4]; i++) {
-        logprintf("%d: %x", i, addr[i]);
+		colours.insert(addr[i]);
     }
 
-    int id = Impl::OpenBitmap(path);
+    int id = Impl::OpenBitmapCached(path, colours);
 
     cell* output;
     amx_GetAddr(amx, params[2], &output);
@@ -53,4 +54,15 @@ cell Natives::GetRGB(AMX* amx, cell* params)
     cell ret = Impl::GetRGB(id, x, y, *r, *g, *b);
 
     return ret;
+}
+
+cell Natives::GetRandomCachedRGB(AMX * amx, cell * params) {
+	int id = params[1];
+	int colour = params[2];
+	int *x = nullptr;
+	int *y = nullptr;
+	amx_GetAddr(amx, params[3], &x);
+	amx_GetAddr(amx, params[4], &y);
+
+	return Impl::GetRandomCachedRGB(id, colour, *x, *y);
 }
