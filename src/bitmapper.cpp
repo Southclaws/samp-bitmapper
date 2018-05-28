@@ -44,7 +44,7 @@ PLUGIN_EXPORT int PLUGIN_CALL Unload()
     return 1;
 }
 
-PLUGIN_EXPORT int PLUGIN_CALL AmxUnload()
+PLUGIN_EXPORT int PLUGIN_CALL AmxUnload(AMX* amx)
 {
-    return 1;
+	return 1;
 }
