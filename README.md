@@ -10,6 +10,8 @@ Simply install to your project:
 sampctl package install Southclaws/samp-bitmapper
 ```
 
+Or, if you prefer [GitHub](https://github.com/Southclaws/samp-bitmapper).
+
 Include in your code and begin using the library:
 
 ```pawn
